@@ -11,20 +11,21 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the Prisma schema and config
+# Copy prisma config and schema
 COPY prisma ./prisma/
 COPY prisma.config.ts ./
 
-# Generate Prisma client
-RUN npx prisma generate
-
 # Copy the rest of the application code
 COPY . .
+
+# Generate Prisma client (after source is present so output lands in src/generated)
+RUN npx prisma generate
 
 # Build the application
 RUN npm run build
 
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 5000
 
 # Define the command to run the app
 CMD ["npm", "start"]
