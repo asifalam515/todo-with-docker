@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 // Middleware to parse JSON bodies
 app.use(express.json());
 
+import taskRoutes from "./routes/taskRoutes.js";
 import todoRoutes from "./routes/todoRoutes.js";
 
 // Basic route
@@ -19,6 +20,8 @@ app.get("/", (req: Request, res: Response) => {
 
 // Todo routes
 app.use("/api/todos", todoRoutes);
+// Task routes
+app.use("/api/tasks", taskRoutes);
 
 // Start the server
 app.listen(port, () => {

@@ -17,8 +17,8 @@
 
 import * as runtime from "@prisma/client/runtime/index-browser"
 
-export type * from '../models'
-export type * from './prismaNamespace'
+export type * from '../models.js'
+export type * from './prismaNamespace.js'
 
 export const Decimal = runtime.Decimal
 
@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Todo: 'Todo'
+  Todo: 'Todo',
+  Task: 'Task'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -80,6 +81,21 @@ export const TodoScalarFieldEnum = {
 } as const
 
 export type TodoScalarFieldEnum = (typeof TodoScalarFieldEnum)[keyof typeof TodoScalarFieldEnum]
+
+
+export const TaskScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  completed: 'completed',
+  dueDate: 'dueDate',
+  priority: 'priority',
+  todoId: 'todoId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
 
 
 export const SortOrder = {
