@@ -21,14 +21,18 @@ model Todo {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
-
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
 model Task {
   id          Int      @id @default(autoincrement())
   title       String
   description String?
   completed   Boolean  @default(false)
   dueDate     DateTime?
-  priority    Int?
+  priority    Priority?
   todoId      Int?
   todo        Todo?    @relation(fields: [todoId], references: [id])
   createdAt   DateTime @default(now())
